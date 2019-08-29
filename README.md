@@ -1,5 +1,5 @@
 ﻿# SQLServerTimeConversion
-A C# project which generates SQL Server functions which convert UTC to Local times and back again
+A C# project which generates SQL Server functions which convert UTC to Local times and back again. To jump straight into the code it generates see [Example.sql](https://github.com/elliveny/SQLServerTimeConversion/blob/master/Example.sql).
 
 A number of SQL Server projects which I've worked on needed a method of converting a UTC time to a user's local time when given that user's timezone. To that end I wanted a function to provide me with the conversion, like this:
 
