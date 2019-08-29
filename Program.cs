@@ -28,7 +28,11 @@ namespace SQLServerTimeConversion {
         }
 
         public static void Generate_funcLocaltoUTC(StreamWriter outStream) {
-            outStream.WriteLine("ALTER FUNCTION [dbo].[funcLocaltoUTC] (@Local datetime, @tzoID varchar({0})", maxTimezoneIdSize);
+            outStream.WriteLine("IF object_id(N'[dbo].[funcLocaltoUTC]', N'FN') IS NOT NULL");
+            outStream.WriteLine("  DROP FUNCTION[dbo].[funcLocaltoUTC]");
+            outStream.WriteLine("GO");
+            outStream.WriteLine();
+            outStream.WriteLine("CREATE FUNCTION [dbo].[funcLocaltoUTC] (@Local datetime, @tzoID varchar({0}))", maxTimezoneIdSize);
             outStream.WriteLine("RETURNS datetime AS");
             outStream.WriteLine("BEGIN");
             outStream.WriteLine("");
@@ -64,7 +68,11 @@ namespace SQLServerTimeConversion {
         }
 
         public static void Generate_funcUTCtoLocal(StreamWriter outStream) {
-            outStream.WriteLine("ALTER FUNCTION [dbo].[funcUTCtoLocal] (@UTC datetime, @tzoID varchar({0}))", maxTimezoneIdSize);
+            outStream.WriteLine("IF object_id(N'[dbo].[funcUTCtoLocal]', N'FN') IS NOT NULL");
+            outStream.WriteLine("  DROP FUNCTION[dbo].[funcUTCtoLocal]");
+            outStream.WriteLine("GO");
+            outStream.WriteLine();
+            outStream.WriteLine("CREATE FUNCTION [dbo].[funcUTCtoLocal] (@UTC datetime, @tzoID varchar({0}))", maxTimezoneIdSize);
             outStream.WriteLine("RETURNS datetime AS");
             outStream.WriteLine("BEGIN");
             outStream.WriteLine("");

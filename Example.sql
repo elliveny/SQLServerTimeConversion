@@ -2,7 +2,11 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER FUNCTION [dbo].[funcLocaltoUTC] (@Local datetime, @tzoID varchar(32)
+IF object_id(N'[dbo].[funcLocaltoUTC]', N'FN') IS NOT NULL
+  DROP FUNCTION[dbo].[funcLocaltoUTC]
+GO
+
+CREATE FUNCTION [dbo].[funcLocaltoUTC] (@Local datetime, @tzoID varchar(32))
 RETURNS datetime AS
 BEGIN
 
@@ -6418,7 +6422,11 @@ BEGIN
 END
 GO
 
-ALTER FUNCTION [dbo].[funcUTCtoLocal] (@UTC datetime, @tzoID varchar(32))
+IF object_id(N'[dbo].[funcUTCtoLocal]', N'FN') IS NOT NULL
+  DROP FUNCTION[dbo].[funcUTCtoLocal]
+GO
+
+CREATE FUNCTION [dbo].[funcUTCtoLocal] (@UTC datetime, @tzoID varchar(32))
 RETURNS datetime AS
 BEGIN
 
